@@ -1,0 +1,25 @@
+<%- include('header') %>
+  <main class="form wide">
+    <h2>Leaderboard</h2>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Player</th>
+        <th>Best score</th>
+        <th>Plays</th>
+      </tr>
+      <% leaders.forEach((l, i) => { %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= l._id %></td>
+          <td><%= l.best %></td>
+          <td><%= l.plays %></td>
+        </tr>
+      <% }) %>
+    </table>
+    <% if (!leaders.length) { %>
+      <p>No scores yet. Be the first.</p>
+    <% } %>
+  </main>
+</body>
+</html>

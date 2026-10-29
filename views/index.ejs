@@ -1,0 +1,54 @@
+<%- include('header') %>
+  <main class="game">
+    <section>
+      <div class="hud">
+        <span>Stage <b id="stn">-</b></span>
+        <span>Score <b id="score">0</b></span>
+        <span id="lives"></span>
+        <span>Clues <b id="code">0/4</b></span>
+        <button id="mus" type="button">Music: off</button>
+      </div>
+
+      <div id="scene" data-s="0">
+        <span id="place">Street corner</span>
+        <div id="diamond">💎</div>
+        <div id="alexwrap">
+          <div id="bubble" class="bubble hidden"></div>
+          <div id="alexsvg"></div>
+        </div>
+        <div class="floor"></div>
+      </div>
+
+      <p id="story"></p>
+
+      <div id="stage">
+        <div class="intro">
+          <h2>Alex wants the diamond.</h2>
+          <p>Clear 7 stages, pick the right doors, find the secret code notes and open the diamond's glass box. You have 3 lives.</p>
+          <% if (!user) { %>
+            <p class="guest">Playing as guest: <a href="/login">log in</a> to save your score.</p>
+          <% } %>
+          <button id="start" class="big-btn" type="button">Start heist</button>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <h3>Top players</h3>
+      <ol id="lb">
+        <% leaders.forEach(l => { %>
+          <li><span><%= l._id %></span><b><%= l.best %></b></li>
+        <% }) %>
+        <% if (!leaders.length) { %>
+          <li>No scores yet</li>
+        <% } %>
+      </ol>
+      <h3>Notebook</h3>
+      <ol id="nb"></ol>
+    </aside>
+  </main>
+
+  <div id="end" class="hidden"></div>
+  <script src="/js/game.js"></script>
+</body>
+</html>
